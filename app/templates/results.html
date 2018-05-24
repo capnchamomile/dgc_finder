@@ -26,8 +26,7 @@
             {% else %}
             {{ 'Pay to play' }}<br>
             {% endif %}
-            {{ 'DGCourseReview.com Rating: ' + course['rating'] + ' out of 5' }}<br>
-            <a href="{{ course['dgcr_url'] }}">DGCourseReview.com Page</a><br>
+            <a href="{{ course['dgcr_url'] }}">DGCourseReview.com</a>{{ ' Rating: ' + course['rating'] + ' out of 5' }}<br>
             <a href="{{ gmaps_url.format(lat=course['latitude'], lng=course['longitude']) }}">Google Maps Link</a>
         </p>
     {% endfor %}
