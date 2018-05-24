@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block app_content %}
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.state_field.label }}<br>
+            {{ form.state_field }}<br>
+            {% for error in form.state_fielderrors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.city_field.label }}<br>
+            {{ form.city_field(size=16) }}<br>
+            {% for error in form.city_fielderrors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <br>
+
+{% endblock %}

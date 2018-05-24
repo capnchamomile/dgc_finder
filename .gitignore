@@ -1,0 +1,9 @@
+__pycache__
+Include
+Lib
+Scripts
+tcl
+app.db
+*.pyc
+pip-selfcheck.json
+config.py

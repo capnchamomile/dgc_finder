@@ -1,0 +1,31 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}
+    {% if title %}{{ title }} - DGC Finder{% else %}Welcome to DGC Finder!{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Disc Golf Course Finder</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+
+{% block content %}
+    <div class="container">
+        {# application content needs to be provided in the app_content block #}
+        {% block app_content %}{% endblock %}
+    </div>
+    <div class="container">
+        <a href="http://github.com/capnchamomile">Steeped by Chamomile</a>
+    </div>
+    <div class="container">
+        <a class="container" href="http://dgcoursereview.com">
+            <img src="https://www.dgcoursereview.com/api/images/powered_by_dgcr.png" alt="DGCourseReview.com">
+        </a>
+    </div>
+{% endblock %}
