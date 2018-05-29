@@ -4,7 +4,7 @@
     <br>
 
     {% for course in results %}
-
+<div class="container">
 <h3>{{ course['name'] }}</h3>
         <p>
             {% if course['state'] == None %}
@@ -29,6 +29,9 @@
             <a href="{{ course['dgcr_url'] }}">DGCourseReview.com</a>{{ ' Rating: ' + course['rating'] + ' out of 5' }}<br>
             <a href="{{ gmaps_url.format(lat=course['latitude'], lng=course['longitude']) }}">Google Maps Link</a>
         </p>
+</div>
     {% endfor %}
-    <p><a href="{{ url_for('index') }}">Look up another city!</a></p>
+    <p>
+
+        <a href="{{ url_for('index') }}">Look up another city!</a></p>
 {% endblock %}

@@ -1,14 +1,17 @@
 import json
+import time
 import requests
+import requests_cache
 from config import Config
 
+requests_cache.install_cache('dgcr_cache', backend='sqlite', expire_after=None)
 
 def pull_json(url):
     response = requests.get(url)
+    now = time.ctime(int(time.time()))
+    print("Time: {} / Used Cache: {}".format(now, response.from_cache))
     response.raise_for_status()
-    json_data = json.loads(response.text)
-    return json_data
-
+    return json.loads(response.text)
 
 def gmaps_geolocator(city, state):
     url = Config.GGL_URL.format(place=city, state=state, key=Config.GGL_KEY)

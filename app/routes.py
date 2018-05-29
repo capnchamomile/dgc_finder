@@ -1,5 +1,6 @@
 from app import app
 from flask import render_template, redirect, url_for, session
+
 from app.functions import get_dgcr, gmaps_geolocator
 import requests
 import json

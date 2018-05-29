@@ -7,3 +7,6 @@ app.db
 *.pyc
 pip-selfcheck.json
 config.py
+deploy
+requirements.txt
+pyenv.cfg
