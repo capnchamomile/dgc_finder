@@ -5,23 +5,17 @@
 
     {% for course in results %}
     <div class="container">
-        {% if "&amp;" in course['name'] %}
-        <h3>{{ course['name'].replace("&amp;", "&") }}</h3>
-        {% else %}
-        <h3>{{ course['name'] }}</h3>
-        {% endif %}
+        <h3>{{ course['name']|safe }}</h3>
         <p>
             {% if course['state'] == None %}
             {{ 'Located in ' + course['city'] }}<br>
             {% else %}
             {{ 'Located in ' + course['city'] + ', ' + course['state'] }}<br>
             {% endif %}
-            {% if ( ("&amp;" in course['street_addr']) and (course['street_addr'] != "") ) %}
-            {{ 'Street Address: ' + course['street_addr'].replace("&amp;", "&") }}<br>
-            {% elif course['street_addr'] != "" %}
-            {{ 'Street Address: ' + course['street_addr'] }}<br>
+            {% if course['street_addr'] != "" %}
+            {{ 'Street Address: ' + course['street_addr']|safe }}<br>
             {% endif %}
-            {{ course['holes'] + ' holes'}}<br>
+            {{ course['holes'] + ' holes' }}<br>
             {% if course['private'] == "1" %}
             {{ 'Private Course' }}<br>
             {% else %}
