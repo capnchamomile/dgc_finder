@@ -6,4 +6,4 @@ from config import Config
 class CityStateForm(FlaskForm):
     city_field = StringField('City', validators=[DataRequired('Enter the city')])
     state_field = SelectField('State', choices=Config.STATES, validators=[Required('Select a state')])
-    submit = SubmitField('Look up courses!')
+    submit = SubmitField('Find Courses!')

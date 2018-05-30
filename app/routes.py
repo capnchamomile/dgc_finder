@@ -15,7 +15,7 @@ def index():
     if form.validate_on_submit():
         session['courses'] = get_dgcr(form.city_field.data, form.state_field.data)
         return redirect(url_for('results'))
-    return render_template('index.html', title='Home Page', form=form)
+    return render_template('index.html', title='Home', form=form)
 
 @app.route('/results', methods=['GET'])
 def results():

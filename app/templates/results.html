@@ -4,15 +4,21 @@
     <br>
 
     {% for course in results %}
-<div class="container">
-<h3>{{ course['name'] }}</h3>
+    <div class="container">
+        {% if "&amp;" in course['name'] %}
+        <h3>{{ course['name'].replace("&amp;", "&") }}</h3>
+        {% else %}
+        <h3>{{ course['name'] }}</h3>
+        {% endif %}
         <p>
             {% if course['state'] == None %}
             {{ 'Located in ' + course['city'] }}<br>
             {% else %}
             {{ 'Located in ' + course['city'] + ', ' + course['state'] }}<br>
             {% endif %}
-            {% if course['street_addr'] != "" %}
+            {% if ( ("&amp;" in course['street_addr']) and (course['street_addr'] != "") ) %}
+            {{ 'Street Address: ' + course['street_addr'].replace("&amp;", "&") }}<br>
+            {% elif course['street_addr'] != "" %}
             {{ 'Street Address: ' + course['street_addr'] }}<br>
             {% endif %}
             {{ course['holes'] + ' holes'}}<br>
@@ -29,9 +35,7 @@
             <a href="{{ course['dgcr_url'] }}">DGCourseReview.com</a>{{ ' Rating: ' + course['rating'] + ' out of 5' }}<br>
             <a href="{{ gmaps_url.format(lat=course['latitude'], lng=course['longitude']) }}">Google Maps Link</a>
         </p>
-</div>
+    </div>
     {% endfor %}
-    <p>
-
-        <a href="{{ url_for('index') }}">Look up another city!</a></p>
+    <h3><a href="{{ url_for('index') }}">Look up another city!</a></h3><br>
 {% endblock %}
