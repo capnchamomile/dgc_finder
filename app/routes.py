@@ -14,9 +14,21 @@ def index():
     form = CityStateForm()
     if form.validate_on_submit():
         session['courses'] = get_dgcr(form.city_field.data, form.state_field.data)
+            
         return redirect(url_for('results'))
     return render_template('index.html', title='Home', form=form)
 
 @app.route('/results', methods=['GET'])
 def results():
-    return render_template('results.html', title='Course Results', results=session['courses'], gmaps_url=Config.GMAPS_URL)
+    results = [] 
+    for course in session['courses']:
+        intercourse = {}
+        for k, v in course.items():
+            try:
+                v = html.unescape(v)
+            except (TypeError, ValueError):
+                pass
+            intercourse[k] = v
+            results.append[intercourse]
+          
+    return render_template('results.html', title='Course Results', results=results, gmaps_url=Config.GMAPS_URL)
