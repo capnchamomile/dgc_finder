@@ -7,19 +7,27 @@
         <p>
             {{ form.state_field.label }}<br>
             {{ form.state_field }}<br>
-            {% for error in form.state_fielderrors %}
+            {% for error in form.state_field.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>
             {{ form.city_field.label }}<br>
             {{ form.city_field(size=16) }}<br>
-            {% for error in form.city_fielderrors %}
+            {% for error in form.city_field.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.prox_field.label }}<br>
+            {{ form.prox_field }}<br>
+            {% for error in form.prox_field.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <p>{{ form.submit() }}</p>
-    </form><br>
+    </form>
+<br>
     <div class="container">
         <a href="http://github.com/capnchamomile" alt="Check my Github">Steeped by Chamomile</a>
     </div>

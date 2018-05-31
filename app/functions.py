@@ -21,8 +21,8 @@ def gmaps_geolocator(city, state):
     return place_latitude, place_longitude
 
 
-def get_dgcr(city, state):
+def get_dgcr(city, state, prox):
     lat, lng = gmaps_geolocator(city, state)
-    url = Config.DGCR_URL.format(key=Config.DGCR_KEY, lat=lat, lng=lng, sig=Config.DGCR_SIG)
+    url = Config.DGCR_URL.format(key=Config.DGCR_KEY, lat=lat, lng=lng, prox=prox, sig=Config.DGCR_SIG)
     dgcr_data = pull_json(url)
     return dgcr_data

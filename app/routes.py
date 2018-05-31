@@ -13,7 +13,7 @@ from config import Config
 def index():
     form = CityStateForm()
     if form.validate_on_submit():
-        session['courses'] = get_dgcr(form.city_field.data, form.state_field.data)
+        session['courses'] = get_dgcr(form.city_field.data, form.state_field.data, form.prox_field.data)
         return redirect(url_for('results'))
     return render_template('index.html', title='Home', form=form)
 
