@@ -20,9 +20,21 @@ def gmaps_geolocator(city, state):
     place_longitude = geometry_data['results'][0]['geometry']['location']['lng']
     return place_latitude, place_longitude
 
+def zip_gmaps(zip):
+    url = Config.ZGGL_URL.format(zip=zip, key=Config.GGL_KEY)
+    geometry_data = pull_json(url)
+    place_latitude = geometry_data['results'][0]['geometry']['location']['lat']
+    place_longitude = geometry_data['results'][0]['geometry']['location']['lng']
+    return place_latitude, place_longitude
 
 def get_dgcr(city, state, prox):
     lat, lng = gmaps_geolocator(city, state)
+    url = Config.DGCR_URL.format(key=Config.DGCR_KEY, lat=lat, lng=lng, prox=prox, sig=Config.DGCR_SIG)
+    dgcr_data = pull_json(url)
+    return dgcr_data
+
+def zip_dgcr(zip, prox):
+    lat, lng = zip_gmaps(zip)
     url = Config.DGCR_URL.format(key=Config.DGCR_KEY, lat=lat, lng=lng, prox=prox, sig=Config.DGCR_SIG)
     dgcr_data = pull_json(url)
     return dgcr_data

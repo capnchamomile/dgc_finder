@@ -27,6 +27,24 @@
         </p>
         <p>{{ form.submit() }}</p>
     </form>
+    <form action="" method="post">
+        {{ zform.hidden_tag() }}
+        <p>
+            {{ zform.zip_field.label }}<br>
+            {{ zform.zip_field(size=16) }}<br>
+            {% for error in zform.zip_fielderrors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ zform.zprox_field.label }}<br>
+            {{ zform.zprox_field }}<br>
+            {% for error in zform.zprox_fielderrors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ zform.zip_submit() }}</p>
+    </form>
 <br>
     <div class="container">
         <a href="http://github.com/capnchamomile" alt="Check my Github">Steeped by Chamomile</a>
